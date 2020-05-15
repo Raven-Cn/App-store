@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="refresh" content="5">
+    <title>App Store 国外账号</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var url = "http://wx.iqimu.cn/api/portal/articles?page=0&order=-id";
+        $.get(url,function(ret){
+            console.log(ret)
+            var data = ret.data
+            if(data){
+                var html = '<table><caption>App Store 国外账号（自动抓取）</caption><tr>';
+                for(var i=0,len=data.length;i<len;i++){
+					html += "<td><span>地区："+data[i]['post_title']+"</span></td>";
+                    html += "<td><span>账号："+data[i]['post_apid']+"</span></td>";
+                    html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                    html += "<td><span>密码："+data[i]['post_apidpass']+"</span></td>";
+                    html += "</tr>";
+                }
+                $("#cont").html(html)
+            }
+        })
+    </script>
+</head>
+<body style="padding:0;margin:0;background-color:#eee;border: 0;">
+    <div id="cont">
+    </table></div>
+</body>
+<style>
+#cont{background-color: #fff; width: 50%; margin: 0 auto; position: relative; top: 50%;padding: 20px;border-radius: 10px;margin-top:50px;}
+table{margin:auto;border-collapse:collapse;}
+td{line-height: 2em;min-width: 24px;border: 1px solid #d4d4d4;padding: 10px;padding-top: 7px;padding-bottom: 7px;vertical-align: top;}
+caption{background: #000;color: #fff;padding: 10px;border-top-right-radius: 5px;border-top-left-radius: 5px;}
+</style>
+</html>
